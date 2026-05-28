@@ -1,0 +1,240 @@
+:root {
+    --color-primary: #3c8067;
+    --color-title: #1c232b;
+    --color-muted: #6c7289;
+    --color-white: #ffffff;
+    --color-overlay: rgba(0, 0, 0, 0.55);
+    --font-serif: "Fraunces", "Times New Roman", serif;
+    --font-sans: "Montserrat", system-ui, sans-serif;
+    --radius-card: 12px;
+    --shadow-card: 0 25px 50px rgba(28, 35, 43, 0.25);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: var(--font-sans);
+    background: #f4f5f7;
+    color: var(--color-title);
+}
+
+.page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1.5rem;
+}
+
+.btn-open-popup {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--color-primary);
+    color: var(--color-white);
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-open-popup:hover {
+    background: #326f59;
+}
+
+.btn-open-popup:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.page__status {
+    margin: 0;
+    font-size: 0.875rem;
+}
+
+/* Popup overlay */
+.product-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 1050;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+}
+
+.product-popup.is-open {
+    display: flex;
+}
+
+.product-popup__backdrop {
+    position: absolute;
+    inset: 0;
+    background: var(--color-overlay);
+}
+
+.product-popup__dialog {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 42rem;
+}
+
+/* Card: image left / text right on desktop */
+.product-popup__card {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-white);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+}
+
+.product-popup__media {
+    flex: 0 0 auto;
+    line-height: 0;
+}
+
+.product-popup__media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 240px;
+    object-fit: cover;
+}
+
+.product-popup__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+}
+
+.product-popup__close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--color-muted);
+    font-size: 1.75rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.product-popup__close:hover {
+    color: var(--color-title);
+}
+
+.product-popup__category {
+    margin: 0 0 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+}
+
+.product-popup__title {
+    margin: 0 0 1rem;
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--color-title);
+}
+
+.product-popup__description {
+    margin: 0 0 1.25rem;
+    font-size: 0.875rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+}
+
+.product-popup__prices {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.product-popup__price-promo {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1;
+}
+
+.product-popup__price-original {
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    text-decoration: line-through;
+}
+
+.product-popup__cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    width: 100%;
+    padding: 0.95rem 1rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.product-popup__cta:hover {
+    background: #326f59;
+}
+
+.product-popup__cta-icon {
+    flex-shrink: 0;
+}
+
+/* Desktop: imagen izquierda, textos derecha */
+@media (min-width: 768px) {
+    .product-popup__card {
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    .product-popup__media {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .product-popup__media img {
+        min-height: 100%;
+        height: 100%;
+    }
+
+    .product-popup__content {
+        flex: 1;
+        justify-content: center;
+        padding: 2rem 2.25rem;
+    }
+
+    .product-popup__title {
+        font-size: 2rem;
+    }
+}

@@ -1,11 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frontend Challenge 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <main class="page">
+        <button type="button" class="btn btn-open-popup" id="openProductPopup">
+            Ver producto
+        </button>
+        <p class="page__status text-muted" id="loadStatus" role="status" aria-live="polite"></p>
+    </main>
+
+    <div class="product-popup" id="productPopup" aria-hidden="true">
+        <div class="product-popup__backdrop" id="productPopupBackdrop" aria-hidden="true"></div>
+
+        <div
+            class="product-popup__dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="productName"
+        >
+            <article class="product-popup__card">
+                <div class="product-popup__media">
+                    <img id="productImage" src="" alt="" width="600" height="600">
+                </div>
+
+                <div class="product-popup__content">
+                    <button
+                        type="button"
+                        class="product-popup__close"
+                        id="closeProductPopup"
+                        aria-label="Cerrar"
+                    >
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                    <p class="product-popup__category" id="productCategory"></p>
+                    <h1 class="product-popup__title" id="productName"></h1>
+                    <p class="product-popup__description" id="productDescription"></p>
+
+                    <div class="product-popup__prices">
+                        <span class="product-popup__price-promo" id="productPromoPrice"></span>
+                        <span class="product-popup__price-original" id="productPrice"></span>
+                    </div>
+
+                    <button type="button" class="product-popup__cta">
+                        <svg class="product-popup__cta-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M6 6h15l-1.5 9h-12L6 6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                            <circle cx="9" cy="20" r="1.25" fill="currentColor"/>
+                            <circle cx="18" cy="20" r="1.25" fill="currentColor"/>
+                            <path d="M6 6L5 3H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        Add to Cart
+                    </button>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
