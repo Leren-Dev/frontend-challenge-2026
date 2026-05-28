@@ -1,5 +1,13 @@
 (function () {
+    // README: base https://lerenconsulting.com/apptiendanube
+    // En localhost usamos el proxy de dev-server.mjs (misma ruta /apptiendanube) por CORS de la API.
     var API_BASE = 'https://lerenconsulting.com/apptiendanube';
+    var host = window.location.hostname;
+
+    if (host === 'localhost' || host === '127.0.0.1') {
+        API_BASE = window.location.origin + '/apptiendanube';
+    }
+
     var PRODUCT_UUID = 'fc7ba3cd-9e62-409d-84df-7ccd64a17f59';
 
     var popup = document.getElementById('productPopup');
